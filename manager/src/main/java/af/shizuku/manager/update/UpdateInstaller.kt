@@ -18,6 +18,7 @@ object UpdateInstaller {
     }
 
     fun forceUpdateWithShizuku(context: Context, apkFile: File): Boolean {
+        if (!AppUpdatePolicy.ENABLED) return false
         if (!Shizuku.pingBinder() && !Shell.getShell().isRoot) {
             Timber.tag(TAG).w("No root or Shizuku available for force update.")
             return false

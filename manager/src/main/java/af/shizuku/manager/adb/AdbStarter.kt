@@ -60,7 +60,7 @@ object AdbStarter {
 
         try {
             ShizukuStateMachine.set(ShizukuStateMachine.State.STARTING)
-            log?.invoke("Starting with wireless adb...\n")
+            log?.invoke(context.getString(R.string.starter_adb_starting))
 
             withContext(Dispatchers.IO) {
                 val key = runCatching { AdbKey(PreferenceAdbKeyStore(ShizukuSettings.getPreferences()), "shizuku+") }
@@ -76,13 +76,13 @@ object AdbStarter {
                     if (tcpPort !in 1..65535) {
                         Timber.tag(TAG).w("TCP mode enabled but stored TCP port is invalid ($tcpPort) — skipping TCP redirect")
                     } else {
-                        log?.invoke("Connecting on port $activePort...")
+                        log?.invoke(context.getString(R.string.starter_adb_connecting_port, activePort))
 
                         AdbClient("127.0.0.1", activePort, key).use { client ->
                             client.connect()
 
-                            log?.invoke("Successfully connected on port $activePort...")
-                            log?.invoke("\nRestarting in TCP mode port: $tcpPort")
+                            log?.invoke(context.getString(R.string.starter_adb_port_connected, activePort))
+                            log?.invoke(context.getString(R.string.starter_adb_tcp_restarting, tcpPort))
 
                             activePort = tcpPort
                             runCatching {
@@ -92,11 +92,11 @@ object AdbStarter {
                     }
                 }
 
-                log?.invoke("Connecting on port $activePort...")
+                log?.invoke(context.getString(R.string.starter_adb_connecting_port, activePort))
 
                 AdbClient("127.0.0.1", activePort, key).use { client ->
                     connectWithRetry(client)
-                    log?.invoke("Successfully connected on port $activePort...\n")
+                    log?.invoke(context.getString(R.string.starter_adb_port_connected, activePort) + "\n")
                     client.runCommand("shell:${Starter.internalCommand}")
                     ShizukuSettings.setLastPort(activePort)
                     ActivityLogManager.log("Shizuku", context.packageName, "Service started via ADB on port $activePort")

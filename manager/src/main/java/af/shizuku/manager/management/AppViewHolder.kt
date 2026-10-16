@@ -34,6 +34,7 @@ import af.shizuku.manager.authorization.AuthorizationManager
 import af.shizuku.manager.databinding.AppListItemBinding
 import af.shizuku.manager.ktx.toHtml
 import af.shizuku.manager.database.ActivityLogManager
+import af.shizuku.manager.utils.AppMetadataLocalizer
 import af.shizuku.manager.database.AppContextManager
 import af.shizuku.manager.utils.AppIconCache
 import af.shizuku.manager.utils.ShizukuSystemApis
@@ -427,7 +428,7 @@ class AppViewHolder(private val binding: AppListItemBinding) :
 
         pkg.text = appInfo.packageName
 
-        val metadata = AppContextManager.getMetadata(capturedPackage)
+        val metadata = AppMetadataLocalizer.metadata(context, AppContextManager.getMetadata(capturedPackage))
         if (metadata != null) {
             appContextView.visibility = View.VISIBLE
             val enabledAny = metadata.potentialEnhancements.any { ShizukuSettings.isAppEnhancementEnabled(capturedPackage, it.key) }

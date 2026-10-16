@@ -47,6 +47,7 @@ object UpdateChecker {
 
     sealed class CheckResult {
         data class UpdateAvailable(val info: UpdateInfo) : CheckResult()
+        object Disabled : CheckResult()
         object UpToDate : CheckResult()
         object NetworkError : CheckResult()
     }
@@ -62,6 +63,7 @@ object UpdateChecker {
      *   3. If all three fail → NetworkError
      */
     suspend fun checkForUpdate(channel: String = "stable"): CheckResult = withContext(Dispatchers.IO) {
+        if (!AppUpdatePolicy.ENABLED) return@withContext CheckResult.Disabled
         val transaction = Sentry.startTransaction("UpdateCheck", "check_for_update")
         Sentry.getSpan()?.setTag("channel", channel)
 
@@ -182,6 +184,7 @@ object UpdateChecker {
      * back to a generic message instead of failing the whole dialog.
      */
     suspend fun fetchReleaseNotesForTag(tag: String): String? = withContext(Dispatchers.IO) {
+        if (!AppUpdatePolicy.ENABLED) return@withContext null
         try {
             val json = fetchJson("$RELEASES_URL/tags/$tag") as? JSONObject ?: return@withContext null
             json.optString("body", "").takeIf { it.isNotBlank() }

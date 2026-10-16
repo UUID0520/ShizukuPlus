@@ -62,6 +62,7 @@ class UpdateManager(private val context: Context) {
      */
     @SuppressLint("Range")
     fun downloadUpdate(downloadUrl: String, versionName: String) {
+        if (!AppUpdatePolicy.ENABLED) return
         createNotificationChannel()
 
         // Callers invoke this from a UI click handler; the file-exists check, delete, and
@@ -325,6 +326,7 @@ class UpdateManager(private val context: Context) {
      *   Returns false for any failure or timeout — the caller then shows the install notification.
      */
     suspend fun installApk(file: File): Boolean {
+        if (!AppUpdatePolicy.ENABLED) return false
         return try {
             // 60 s covers piping a multi-MB APK over Shizuku stdin + pm install processing.
             withTimeoutOrNull(60_000) {

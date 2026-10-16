@@ -1,0 +1,14 @@
+// ARM64 custom builds. Override NDK with -PcustomNdkVersion=<version>.
+gradle.beforeProject { project ->
+    project.plugins.withId("com.android.base") {
+        def android = project.extensions.getByName("android")
+        android.ndkVersion = project.findProperty("customNdkVersion")?.toString() ?: "29.0.14206865"
+        android.defaultConfig.ndk.abiFilters.clear()
+        android.defaultConfig.ndk.abiFilters.add("arm64-v8a")
+    }
+    project.tasks.configureEach { task ->
+        if (task.name.startsWith("uploadSentry") || task.name.startsWith("sentryUpload")) {
+            task.enabled = false
+        }
+    }
+}

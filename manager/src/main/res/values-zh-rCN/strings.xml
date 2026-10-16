@@ -41,7 +41,7 @@
     <string name="root_hub_device_identity_spoofed">模拟: %s</string>
     <string name="root_hub_device_identity_none">无 (显示真实设备)</string>
     
-    <string name="doctor_check_secure_settings">安全设置: ^1</string>
+    <string name="doctor_check_secure_settings">安全设置</string>
     <!-- Home - Adb -->
     <string name="home_adb_title"><![CDATA[通过连接电脑启动（使用 adb）]]></string>
     <string name="home_adb_description"><![CDATA[对于没有 root 的设备需要借助 adb 来启动 Shizuku（需要连接电脑）。这个过程每次设备重新启动后需要重新进行。请<b><a href=\"%1$s\">阅读帮助</a></b>。]]></string>
@@ -75,9 +75,7 @@
     <string name="dialog_usb_debugging_not_enabled">USB调试未启用。\n请在“开发者选项”中启用它。</string>
     <string name="dialog_adb_pairing_message">请按照以下步骤开始配对：\n- 打开“开发者选项”\n- 启用“USB调试”和“无线调试”\n-
         点击“无线调试”左侧\n- 点击“使用配对码配对设备”\n- 在通知栏中输入配对码</string>
-    <string name="dialog_adb_pairing_accessibility_permission">在 Android 14上，安装/更新Shizuku 软件包安装程序撤销了
-        ^1 权限，这是启用配对辅助辅助功能所必需的。\n\n要授予它，请运行以下ADB 命令：\n\n^2\n\n运行命令后， 您可以继续配对。\n\n注意：您可以通过 ADB
-        安装/更新Shizuku 来绕过此操作。</string>
+    <string name="dialog_adb_pairing_accessibility_permission">在 Android 14 上，通过系统安装程序安装或更新 Shizuku 时，%1$s 权限可能被撤销，而配对无障碍服务需要此权限。\n\n请执行以下 ADB 命令授予权限：\n\n%2$s\n\n执行后即可继续配对。\n\n提示：通过 ADB 安装或更新 Shizuku 可避免此问题。</string>
     <string name="dialog_adb_pairing_accessibility_enable">请启用辅助功能服务以开始配对过程。这将使 Shizuku
         能够检测到配对码。\n\n辅助功能服务将在找到配对码后或1分钟后关闭以节省电量。</string>
     <string name="dialog_adb_pairing_accessibility_navigate">请按照以下步骤开始配对：\n- 进入“开发者选项”\n-
@@ -154,13 +152,15 @@
     <!-- Settings -->
     <string name="settings_title">设置</string>
     <string name="settings_behavior">行为</string>
+    <string name="settings_hide_from_recents">后台隐藏</string>
+    <string name="settings_hide_from_recents_summary">在「最近任务」隐藏卡片</string>
     <string name="settings_start_on_boot">自启动</string>
     <string name="settings_start_on_boot_summary">需要 Android 11 或更高版本或 root 权限</string>
     <string name="settings_start_on_boot_bug">由于 Android 11-12
         中的一个漏洞，无线调试不会记住任何授权网络。\n\n每次重启时，当授权对话框弹出时，点击“允许”重新授权网络。</string>
     <string name="settings_use_system_color">使用系统主题颜色</string>
-    <string name="settings_watchdog">Watchdog</string>
-    <string name="settings_watchdog_summary">如果 Shizuku 崩溃，则自动重启</string>
+    <string name="settings_watchdog">服务守护</string>
+    <string name="settings_watchdog_summary">在 Shizuku+ 崩溃或意外停止后自动重启服务。底层网络断开时无法重连，例如使用 RNDIS 或 USB ADB 时拔出 USB 线。</string>
     <string name="settings_tcp_mode">TCP 模式</string>
     <string name="settings_tcp_mode_summary">"允许 Shizuku 在没有 Wi-Fi 的情况下重启。（Shizuku 必须在重启后启动过一次）"</string>
     <string name="settings_tcp_mode_dialog_close_port">"TCP 端口将立即关闭。您需要连接 Wi-Fi 才能重新启用 TCP 模式。是否继续？"</string>
@@ -198,7 +198,7 @@
     <string name="bug_report_dialog_button_email">电子邮件</string>
     <!-- Snackbar -->
     <string name="snackbar_invalid_port">端口必须介于 1 和 65535 之间</string>
-    <string name="snackbar_battery_optimization_home">要使 开机启动/watchdog 功能正常工作，必须禁用电池优化。</string>
+    <string name="snackbar_battery_optimization_home">开机启动和服务守护需要关闭电池优化，才能正常工作。</string>
     <string name="snackbar_battery_optimization_settings">请禁用电池优化功能以使用此功能。</string>
     <string name="snackbar_action_fix">修复</string>
     <!-- Toast -->
@@ -256,10 +256,10 @@
         权限才能开机启动。点击了解如何授予此权限。</string>
     <string name="wadb_notification_channel">ADB 自动启动服务</string>
     <!-- Watchdog -->
-    <string name="watchdog_running">Watchdog 正在运行</string>
-    <string name="watchdog_turn_off">关</string>
-    <string name="watchdog_shizuku_crashed_title">Shizuku 最近崩溃了</string>
-    <string name="watchdog_shizuku_crashed_text">Watchdog 已重启服务。点击了解可防止未来崩溃的潜在修复方案。</string>
+    <string name="watchdog_running">服务守护正在运行</string>
+    <string name="watchdog_turn_off">关闭</string>
+    <string name="watchdog_shizuku_crashed_title">Shizuku 最近发生崩溃</string>
+    <string name="watchdog_shizuku_crashed_text">服务守护已重启服务。点击查看有助于避免再次崩溃的解决方法。</string>
     <string name="watchdog_shizuku_crashed_action_turn_off_alerts">关闭提醒</string>
     <!-- Misc -->
     <string name="dialog_cannot_open_browser_title">无法启动浏览器</string>
@@ -291,13 +291,13 @@
     <string name="settings_category_language">语言</string>
 
     <string name="root_hub_magic_setup_all_summary">Shizuku+ 已为您配置了 %d 个应用！</string>
-    <string name="root_hub_magic_setup_success">Magic Setup 完成！Shizuku+ 已为您配置了 %s。</string>
-    <string name="root_hub_magic_setup_fail">Magic Setup 失败。请尝试手动复制路径。</string>
+    <string name="root_hub_magic_setup_success">自动配置完成！Shizuku+ 已为你配置 %s。</string>
+    <string name="root_hub_magic_setup_fail">自动配置失败，请复制路径并手动设置。</string>
     <string name="root_hub_magic_setup_all_no_apps">未找到支持自动化设置的 root 应用。</string>
     <string name="root_hub_path_copied">SU 路径已复制到剪贴板</string>
     <string name="root_hub_no_export">未设置 SU 路径。请先在主页导出 Shizuku 文件。</string>
     
-    <string name="settings_nav_behavior_summary">开机启动、Watchdog 和 TCP 模式</string>
+    <string name="settings_nav_behavior_summary">开机启动、服务守护和 TCP 模式</string>
     <string name="settings_nav_shizuku_plus_summary">增强型 API、Shell 加速器等</string>
     <string name="settings_nav_ui_summary">主题、颜色、语言</string>
     <string name="settings_nav_app_management_summary">滑动和长按操作</string>

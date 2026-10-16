@@ -59,7 +59,7 @@ fun ServerMetricsScreen() {
                     val minutes = (uptimeMs / (1000 * 60)) % 60
                     val hours = (uptimeMs / (1000 * 60 * 60)) % 24
                     val days = (uptimeMs / (1000 * 60 * 60 * 24))
-                    uptimeText = if (days > 0) String.format("%dd %02d:%02d:%02d", days, hours, minutes, seconds)
+                    uptimeText = if (days > 0) context.getString(R.string.server_uptime_days, days, hours, minutes, seconds)
                     else String.format("%02d:%02d:%02d", hours, minutes, seconds)
                     
                     clientCountText = context.getString(R.string.server_clients_connected, stats.getInt("client_count"))
@@ -79,7 +79,7 @@ fun ServerMetricsScreen() {
                         if (gb > 0) "$gb GB" else if (mb > 0) "$mb MB" else "$kb KB"
                     }
                     val maxStr = if (maxRaw == Long.MAX_VALUE) context.getString(R.string.server_memory_uncapped) else formatSize(max)
-                    memoryDetails = "${formatSize(used)} / $maxStr (Max Allowed)"
+                    memoryDetails = context.getString(R.string.server_memory_details, formatSize(used), maxStr)
                 }
             } catch (e: Exception) {
                 Timber.w(e)

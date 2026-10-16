@@ -34,3 +34,6 @@ build_failure.log
 check.log
 smoke-test.log
 ktlint
+
+# Generated compatibility helper bundled during builds
+/manager/src/main/assets/compat.apk

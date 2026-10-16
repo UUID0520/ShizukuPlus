@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bridge_test_not_connected">Shizuku 未连接。请从主页启动服务后重试。</string>
+    <string name="bridge_test_failure_detail">原因：%1$s\n\n</string>
+    <string name="bridge_test_adb_hint">检测到 ADB／Shell 模式。如果设备限制 Shell 写入 /data/local/tmp，请在兼容中心点击“导出”，并将 Root 应用配置为使用导出路径；也可以切换至 Root 模式以获得完整访问权限。</string>
+    <string name="bridge_test_retry_hint">请确认 Shizuku 服务正在运行，然后重试。</string>
+    <string name="bridge_test_deploy_failed">❌ 无法将桥接部署到 /data/local/tmp。\n\n%1$s%2$s</string>
+    <string name="bridge_test_root_privilege">Root（UID 0），拥有完整权限</string>
+    <string name="bridge_test_shell_privilege">Shell／ADB（UID 2000）</string>
+    <string name="bridge_test_unknown">未知</string>
+    <string name="bridge_test_deployed">✅ 桥接已部署到 %1$s\n</string>
+    <string name="bridge_test_files_missing">❌ %1$s 中缺少桥接文件\n</string>
+    <string name="bridge_test_privilege_label">• 权限级别：%1$s\n</string>
+    <string name="bridge_test_exec_ok">✅ 端到端执行成功（UID %1$s）</string>
+    <string name="bridge_test_exec_failed">⚠️ 端到端执行未完成，使用 exec 调用的应用可能在此失败：\n%1$s</string>
+    <string name="bridge_test_exec_blocked">⚠️ 操作被设备阻止（可能由 SELinux 导致）：%1$s</string>
+    <string name="bridge_test_exec_label">• 应用执行测试：%1$s\n\n</string>
+    <string name="bridge_test_root_summary">Root 级桥接：需要真正 Root 权限的应用可通过此桥接工作。</string>
+    <string name="bridge_test_shell_summary">Shell 级桥接（类似 ADB）：仅需要 Shell／ADB 权限的功能可以工作；需要真正 Root 权限的功能（例如读取其他应用的私有数据）仍不可用，即使应用检测到了 Root。</string>
+    <string name="bridge_test_authorize_hint">\n\n调用此桥接的应用必须先在 Shizuku+ 中获得授权，才能成功执行命令。</string>
+</resources>

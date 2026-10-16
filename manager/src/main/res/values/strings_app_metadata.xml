@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="metadata_enh_shell_interceptor_title" formatted="false">Shell Acceleration</string>
+    <string name="metadata_enh_shell_interceptor_description" formatted="false">Intercepts pm/am commands for native speed.</string>
+    <string name="metadata_enh_storage_proxy_title" formatted="false">Storage Bridge</string>
+    <string name="metadata_enh_storage_proxy_description" formatted="false">Bypasses Android 16/17 storage restrictions.</string>
+    <string name="metadata_enh_dpm_plus_title" formatted="false">Enhanced DPM</string>
+    <string name="metadata_enh_dpm_plus_description" formatted="false">Direct DevicePolicyManager access for better freezing.</string>
+    <string name="metadata_enh_npu_plus_title" formatted="false">NPU Accelerator</string>
+    <string name="metadata_enh_npu_plus_description" formatted="false">Prioritized Neural Processing Unit scheduling.</string>
+    <string name="metadata_enh_vm_plus_title" formatted="false">AVF Linux VM</string>
+    <string name="metadata_enh_vm_plus_description" formatted="false">Spawns an isolated Microdroid VM for this task.</string>
+    <string name="metadata_enh_win_plus_title" formatted="false">Window Tuner</string>
+    <string name="metadata_enh_win_plus_description" formatted="false">Forces free-form and advanced window control.</string>
+    <string name="metadata_enh_overlay_manager_plus_title" formatted="false">Overlay Bridge</string>
+    <string name="metadata_enh_overlay_manager_plus_description" formatted="false">Installs and manages runtime overlays for theming.</string>
+    <string name="metadata_enh_network_governor_plus_title" formatted="false">Network Governor</string>
+    <string name="metadata_enh_network_governor_plus_description" formatted="false">DNS-based firewall and traffic control without raw iptables.</string>
+    <string name="metadata_app_com_topjohnwu_magisk" formatted="false">Magisk: The systemless root solution. Shizuku+ spoofs its presence to other apps.</string>
+    <string name="metadata_app_eu_chainfire_supersu" formatted="false">SuperSU: Legacy root solution. Shizuku+ spoofs its presence to other apps for maximum legacy compatibility.</string>
+    <string name="metadata_app_org_lsposed_manager" formatted="false">LSPosed: Xposed framework modern implementation. Shizuku+ successfully masks its presence.</string>
+    <string name="metadata_app_com_vipercn_viper4android_v2" formatted="false">ViPER4Android FX: Audio effects engine. Driver installation requires real root, but basic setup is mockable.</string>
+    <string name="metadata_app_org_adaway" formatted="false">AdAway: Open-source ad blocker. SU path auto-configured; use \'Network Governor\' in Shizuku+ for rootless DNS blocking.</string>
+    <string name="metadata_app_dev_ukanth_ufirewall" formatted="false">AFWall+: Firewall app. Fully functional rootless under Shizuku+ via automatic local iptables fallback mocking.</string>
+    <string name="metadata_nav_22" formatted="false">Menu &gt; Preferences &gt; SU path</string>
+    <string name="metadata_app_com_ramdaas_ramexe" formatted="false">RamExe: RAM manager and process killer. SU path auto-configured via Android global settings (no root needed).</string>
+    <string name="metadata_app_me_piebridge_prevent" formatted="false">Prevent: Blocks apps from auto-starting to reduce memory and data leakage. SU path auto-configured via Android global settings.</string>
+    <string name="metadata_app_com_samsung_android_hexinstall" formatted="false">Hex Installer: Theming engine for Samsung. Shizuku+ provides the necessary Overlay Bridge for OneUI 8+.</string>
+    <string name="metadata_app_com_samsung_android_themepark" formatted="false">Theme Park: Official Samsung customization. Enhanced by Shizuku+ Overlay API.</string>
+    <string name="metadata_app_com_keramidas_titaniumbackup" formatted="false">Titanium Backup: App data backup and restore fully works via SU Bridge using native \'bu\' mapping.</string>
+    <string name="metadata_nav_28" formatted="false">Menu &gt; More &gt; Preferences &gt; su executable path</string>
+    <string name="metadata_app_eu_darken_sdm" formatted="false">SD Maid (Legacy): Fully functional via SU Bridge; deep system paths and shell execution are safely routed.</string>
+    <string name="metadata_nav_30" formatted="false">Settings &gt; Root &gt; Binary path</string>
+    <string name="metadata_app_com_speedsoftware_rootexplorer" formatted="false">Root Explorer: File manager with elevated access. SU path auto-configured; Storage Bridge handles deep system browsing.</string>
+    <string name="metadata_nav_32" formatted="false">Settings &gt; Root access &gt; SU path</string>
+    <string name="metadata_app_com_speedsoftware_explorer" formatted="false">Speed Explorer: File manager by Speed Software.</string>
+    <string name="metadata_app_com_jrummy_root_browserfree" formatted="false">Root Browser: File manager with elevated access. SU path auto-configured; Storage Bridge handles system browsing.</string>
+    <string name="metadata_nav_35" formatted="false">Settings &gt; Superuser &gt; SU binary path</string>
+    <string name="metadata_app_com_estrongs_android_pop" formatted="false">ES File Explorer: All-in-one file manager. SU path auto-configured via shared_prefs when running as root.</string>
+    <string name="metadata_nav_37" formatted="false">Tools &gt; Root Explorer &gt; su path</string>
+    <string name="metadata_app_com_github_machiav3lli_backup" formatted="false">OAndBackupX: Open-source backup for root users. SU path auto-configured via shared_prefs.</string>
+    <string name="metadata_nav_39" formatted="false">Preferences &gt; Advanced &gt; Custom shell</string>
+    <string name="metadata_app_com_jrummy_apps_build_prop_editor" formatted="false">BuildProp Editor: Edit system properties. Fully functional rootless under Shizuku+ via build.prop shadow-copy redirection.</string>
+    <string name="metadata_app_com_machiav3lli_neo_backup" formatted="false">Neo Backup: Modern open-source backup solution.</string>
+    <string name="metadata_app_projekt_substratum_lite" formatted="false">Substratum Lite: Theming engine for Android.</string>
+    <string name="metadata_app_com_oasisfeng_greenify" formatted="false">Greenify: Maximize battery savings by hibernating apps.</string>
+    <string name="metadata_app_com_franco_doze" formatted="false">Naptime: Aggressive Doze for better battery life.</string>
+    <string name="metadata_app_com_uzumapps_wakelockdetector" formatted="false">Wakelock Detector: Find apps draining your battery.</string>
+    <string name="metadata_app_com_asksven_betterbatterystats" formatted="false">BetterBatteryStats: Deep dive into battery drain.</string>
+    <string name="metadata_app_org_swiftapps_swiftbackup" formatted="false">Swift Backup: Uses native Shizuku integration — no SU Bridge path needed. Grant access in App Management, then use its own \"Grant with Root or Shizuku\" option.</string>
+    <string name="metadata_nav_48" formatted="false">Shizuku-native: no SU path setting. Use Swift Backup\'s \"Grant with Root or Shizuku\" flow.</string>
+    <string name="metadata_app_thejaustin_hexodus" formatted="false">Hexodus: Spiritual successor to Hex Installer for OneUI 8.</string>
+    <string name="metadata_app_thejaustin_afdroid" formatted="false">afdroid: Expressive F-Droid client.</string>
+    <string name="metadata_app_thejaustin_pearity" formatted="false">Pearity: iOS parity settings for OneUI.</string>
+    <string name="metadata_app_thejaustin_termux_ai" formatted="false">Termux AI: AI-powered terminal with NPU integration.</string>
+    <string name="metadata_app_thejaustin_appmanager" formatted="false">AppManager: Advanced package manager with archiving.</string>
+    <string name="metadata_app_thejaustin_simweather" formatted="false">SimWeather: Material You weather tool.</string>
+    <string name="metadata_app_thejaustin_contactsplus" formatted="false">ContactsPlus: Fossify Contacts fork with M3 design.</string>
+    <string name="metadata_app_thejaustin_obtainiumplus" formatted="false">ObtainiumPlus: AI-assisted Obtainium fork.</string>
+    <string name="metadata_app_thejaustin_snapback" formatted="false">SnapBack: Secure Snapchat Backup Viewer.</string>
+    <string name="metadata_app_com_aistra_hail" formatted="false">Hail: Modern app freezer.</string>
+    <string name="metadata_app_samolego_canta" formatted="false">Canta: Powerful system app debloater.</string>
+    <string name="metadata_app_rikka_appops" formatted="false">App Ops: Manage hidden app permissions.</string>
+    <string name="metadata_app_com_catchingnow_icebox" formatted="false">Ice Box: Freeze apps to save battery.</string>
+    <string name="metadata_app_com_zacharee_installwithoptions" formatted="false">InstallWithOptions: Advanced APK installer.</string>
+    <string name="metadata_app_cf_playhi_freezeyou" formatted="false">FreezeYou: Battery and speed optimizer.</string>
+    <string name="metadata_app_com_oasisfeng_island" formatted="false">Island: App isolation and cloning.</string>
+    <string name="metadata_app_com_oasisfeng_island_fdroid" formatted="false">Insular: Island fork for F-Droid.</string>
+    <string name="metadata_app_bin_mt_plus" formatted="false">MT Manager: Sophisticated file manager.</string>
+    <string name="metadata_app_pl_solidexplorer2" formatted="false">Solid Explorer: Powerful file manager. SU path auto-configured via shared_prefs when running as root.</string>
+    <string name="metadata_nav_68" formatted="false">Settings &gt; Root access &gt; Root binary</string>
+    <string name="metadata_app_com_ghisler_android_totalcommander" formatted="false">Total Commander: Desktop-class file explorer. SU path auto-configured via shared_prefs when running as root.</string>
+    <string name="metadata_nav_70" formatted="false">Config &gt; Root path</string>
+    <string name="metadata_app_com_lonelycatgames_xplore" formatted="false">X-Plore: Dual-pane file manager.</string>
+    <string name="metadata_app_ru_zdevs_zarchiver" formatted="false">ZArchiver: Comprehensive archive manager.</string>
+    <string name="metadata_app_com_alphainventor_filemanager" formatted="false">File Manager Plus: Cloud and local explorer.</string>
+    <string name="metadata_app_net_dinglisch_android_taskerm" formatted="false">Tasker: Advanced Android automation.</string>
+    <string name="metadata_app_com_arlosoft_macrodroid" formatted="false">MacroDroid: User-friendly automation.</string>
+    <string name="metadata_app_henrichg_phoneprofilesplus" formatted="false">PhoneProfilesPlus: Contextual device config.</string>
+    <string name="metadata_app_eu_toneiv_ubktouch" formatted="false">UbikiTouch: Global swipe gestures.</string>
+    <string name="metadata_app_com_kieronquinn_ambientmusicmod" formatted="false">Ambient Music Mod: Now Playing for everyone.</string>
+    <string name="metadata_app_com_kieronquinn_darq" formatted="false">DarQ: Per-app force dark mode.</string>
+    <string name="metadata_app_com_zacharee_tweaker" formatted="false">System UI Tuner: Hidden system settings.</string>
+    <string name="metadata_app_dev_lexip_hecate" formatted="false">Adaptive-Theme: Smart dark mode.</string>
+    <string name="metadata_app_mahmud0808_colorblendr" formatted="false">ColorBlendr: Material You color editor.</string>
+    <string name="metadata_app_com_kieronquinn_smartspacer" formatted="false">Smartspacer: Enhanced \'At a Glance\' widget.</string>
+    <string name="metadata_app_com_ysy_app_firewall" formatted="false">NetWall: Rootless app firewall.</string>
+    <string name="metadata_app_com_deltazefiro_amarokhider" formatted="false">Amarok: Hide private files and apps.</string>
+    <string name="metadata_app_ahmetcanarslan_shizuwall" formatted="false">ShizuWall: Open-source app firewall.</string>
+    <string name="metadata_app_tk_zwander_wifilist" formatted="false">WiFiList: View saved WiFi passwords.</string>
+    <string name="metadata_app_p_shashank_ashellyou" formatted="false">aShell You: Material local ADB shell.</string>
+    <string name="metadata_app_rohitkushvaha01_reterminal" formatted="false">ReTerminal: Material 3 terminal emulator.</string>
+    <string name="metadata_app_com_imranr98_obtainium" formatted="false">Obtainium: App updates from source.</string>
+    <string name="metadata_app_com_aurora_store" formatted="false">Aurora Store: Privacy Play Store client.</string>
+    <string name="metadata_app_com_looker_droidify" formatted="false">Droid-ify: Material F-Droid client.</string>
+    <string name="metadata_app_eu_darken_sdmse" formatted="false">SD Maid SE: System cleaning tool.</string>
+    <string name="metadata_app_com_paget96_chargemonitor" formatted="false">Battery Charge Limit: Cap charge % to preserve battery health. Needs Shizuku with root to write charge limit sysfs.</string>
+    <string name="metadata_app_com_mihonapp_mihon" formatted="false">Mihon: Manga reader and extension manager.</string>
+    <string name="metadata_category_96" formatted="false">Backup &amp; Cleaning</string>
+    <string name="metadata_category_97" formatted="false">File Management</string>
+    <string name="metadata_category_98" formatted="false">System Customization</string>
+    <string name="metadata_category_99" formatted="false">Battery &amp; Optimization</string>
+    <string name="metadata_category_100" formatted="false">Privacy &amp; Security</string>
+    <string name="metadata_category_101" formatted="false">Advanced Tools</string>
+</resources>

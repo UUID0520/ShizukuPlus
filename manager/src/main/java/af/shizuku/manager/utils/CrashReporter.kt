@@ -1,5 +1,7 @@
 package af.shizuku.manager.utils
 
+import af.shizuku.manager.R
+
 import android.os.Build
 import android.os.PowerManager
 import android.content.Context
@@ -138,6 +140,6 @@ object CrashReporter {
             putExtra(android.content.Intent.EXTRA_STREAM, uri)
             addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        context.startActivity(android.content.Intent.createChooser(intent, "Share Crash Report"))
+        context.startActivity(android.content.Intent.createChooser(intent, context.getString(R.string.share_crash_report)))
     }
 }

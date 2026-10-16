@@ -326,7 +326,7 @@ fun SearchResultItem(
                 .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
             Text(
-                text = item.category ?: "Settings",
+                text = item.category ?: stringResource(R.string.settings_title),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(bottom = 4.dp)

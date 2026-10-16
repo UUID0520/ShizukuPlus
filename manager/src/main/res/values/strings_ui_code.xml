@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="system_hub_title">System Hub</string>
+    <string name="system_hub_metrics">Metrics</string>
+    <string name="server_uptime_days">%1$dd %2$02d:%3$02d:%4$02d</string>
+    <string name="server_memory_details">%1$s / %2$s (Max Allowed)</string>
+    <string name="live_status_channel">Shizuku+ Live Status</string>
+    <string name="live_status_channel_description">Shows live Shizuku activity</string>
+    <string name="live_status_active">Shizuku+ Active</string>
+    <string name="live_status_bridge_active">System Bridge Active</string>
+    <string name="live_status_monitoring">Monitoring...</string>
+    <string name="notification_channel_auth_errors">Authentication Errors</string>
+    <string name="notification_channel_crash_reports">Crash Reports</string>
+    <string name="share_crash_report">Share Crash Report</string>
+    <string name="restore_key_invalidated">Restore failed: the screen lock or biometrics changed and invalidated the encryption key. This backup can no longer be decrypted.</string>
+    <string name="backup_key_invalidated">Backup failed: the screen lock or biometrics changed and invalidated the encryption key. Please retry to generate a new key.</string>
+    <string name="backup_key_unavailable">This backup\'s encryption key no longer exists. The key is destroyed when Shizuku+ is uninstalled or its data is cleared, so only the installation that created the backup can restore it.</string>
+    <string name="backup_decryption_failed">This backup could not be decrypted. It may belong to another installation, be corrupt, or have been modified. Encrypted backups cannot be restored after reinstalling or clearing app data.</string>
+    <string name="settings_root_mode_only">Root mode only — this exploit requires the server to run as UID 0.</string>
+    <string name="settings_storage_adb_limit">ADB mode: /data/data limited to debuggable apps — backup tools may not see app data.</string>
+    <string name="su_preset_aosp">/system/bin/su (Standard AOSP)</string>
+    <string name="su_preset_supersu">/system/xbin/su (SuperSU Legacy)</string>
+    <string name="su_preset_magisk">/sbin/su (Magisk/Custom ROMs)</string>
+    <string name="backup_invalid_format">Failed to import settings (invalid format)</string>
+    <string name="backup_encrypted_format_required">This backup is encrypted. Use the encrypted restore option.</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="backup_no_readable_data">No data could be read for %1$s. The app may block backup access.</string>
+    <string name="backup_app_error_detail">Backup failed for %1$s: %2$s</string>
+    <string name="backup_freeze_error_detail">Freeze toggle failed: %1$s</string>
+    <string name="starter_root_starting">Starting with root...\n</string>
+    <string name="starter_samsung_disabled">Samsung System UID Escalation is disabled for security reasons.\n</string>
+    <string name="starter_samsung_enable_hint">Enable it in Developer Settings to use this experimental feature.\n\n</string>
+    <string name="starter_samsung_starting">Attempting Samsung System UID Escalation via FOTA agent...\n\n</string>
+    <string name="starter_samsung_broadcast_sent">FOTA command broadcast sent!\n\n</string>
+    <string name="starter_samsung_failed">Samsung System UID Escalation failed!\n</string>
+    <string name="starter_adb_starting">Starting with wireless adb...\n</string>
+    <string name="starter_adb_connecting_port">Connecting on port %1$d...</string>
+    <string name="starter_adb_port_connected">Successfully connected on port %1$d...</string>
+    <string name="starter_adb_tcp_restarting">\nRestarting in TCP mode port: %1$d</string>
+    <string name="starter_connected_seconds">Connected in %1$.1fs</string>
+</resources>

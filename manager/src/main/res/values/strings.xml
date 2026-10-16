@@ -363,6 +363,8 @@
     <!-- Settings -->
     <string name="settings_title">Settings</string>
     <string name="settings_behavior">Behavior</string>
+    <string name="settings_hide_from_recents">Hide from Recents</string>
+    <string name="settings_hide_from_recents_summary">Hide the app card in Recents</string>
     <string name="settings_start_on_boot">Start on boot</string>
     <string name="settings_start_on_boot_summary">Requires Android 11+ or root</string>
     <string name="settings_start_on_boot_bug">Due to a bug in Android 11-12, wireless debugging does not remember any authorized networks.\n\nYou will need to re-authorize the network on each reboot by tapping \"Allow\" when the authorization dialog pops up.</string>
@@ -654,13 +656,13 @@
 
     <!-- Bug Report Dialog -->
     <string name="bug_report_dialog_before_reporting">First, please do the following:</string>
-    <string name="bug_report_dialog_update">Check that you are using the %1$s.</string>
+    <string name="bug_report_dialog_update">Check that you are using the ^1.</string>
     <string name="bug_report_dialog_link_update">latest version</string>
-    <string name="bug_report_dialog_wiki">Read the %1$s and follow all relevant troubleshooting steps.</string>
+    <string name="bug_report_dialog_wiki">Read the ^1 and follow all relevant troubleshooting steps.</string>
     <string name="bug_report_dialog_link_wiki">wiki</string>
-    <string name="bug_report_dialog_issues">Search through all %1$s to see if your bug has already been reported.</string>
+    <string name="bug_report_dialog_issues">Search through all ^1 to see if your bug has already been reported.</string>
     <string name="bug_report_dialog_link_issues">existing issues</string>
-    <string name="bug_report_dialog_method">Please submit an issue on %1$s if you have an account.</string>
+    <string name="bug_report_dialog_method">Please submit an issue on ^1 if you have an account.</string>
     <string name="bug_report_dialog_method_2">Otherwise, you can send an email.</string>
     <string name="bug_report_dialog_button_email">Email</string>
 
@@ -894,7 +896,7 @@
     <string name="settings_main_nav_startup_behavior_summary">Boot options, watchdog, network, and activity status</string>
     <string name="settings_main_nav_advanced_diagnostics_title">Advanced &amp; Diagnostics</string>
     <string name="settings_main_nav_advanced_diagnostics_summary">Logs, ADB tools, and troubleshooting</string>
-    <string name="settings_main_nav_about_summary">Version, licenses, and updates</string>
+    <string name="settings_main_nav_about_summary">Version, licenses, and custom build information</string>
     <string name="settings_accent_violet_applied">Midnight Violet applied</string>
     <string name="settings_accent_green_applied">Forest Green applied</string>
     <string name="settings_accent_crimson_applied">Crimson Rose applied</string>

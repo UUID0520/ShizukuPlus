@@ -19,9 +19,11 @@ object SettingsSearchEngine {
     )
 
     private var indexedItems: List<SettingItem>? = null
+    private var indexedLocaleTags: String? = null
 
     fun reset() {
         indexedItems = null
+        indexedLocaleTags = null
     }
 
     private val screens = mapOf(
@@ -36,7 +38,8 @@ object SettingsSearchEngine {
     )
 
     fun init(context: Context) {
-        if (indexedItems != null) return
+        val localeTags = context.resources.configuration.locales.toLanguageTags()
+        if (indexedItems != null && indexedLocaleTags == localeTags) return
         val items = mutableListOf<SettingItem>()
 
         val namespace = "http://schemas.android.com/apk/res/android"
@@ -77,6 +80,7 @@ object SettingsSearchEngine {
             }
         }
         indexedItems = items
+        indexedLocaleTags = localeTags
     }
 
     fun search(context: Context, query: String): List<SettingItem> {

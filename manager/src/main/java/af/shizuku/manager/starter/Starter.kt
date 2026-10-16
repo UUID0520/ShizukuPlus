@@ -59,7 +59,7 @@ object Starter {
         }
 
         val elapsed = (System.currentTimeMillis() - t0) / 1000.0
-        log?.invoke("Connected in ${String.format("%.1f", elapsed)}s")
+        log?.invoke(getContext().getString(R.string.starter_connected_seconds, elapsed))
         log?.invoke(serviceStartedMessage)
     }
 }

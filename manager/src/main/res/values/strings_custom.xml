@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="custom_build_title">Customized build</string>
+    <string name="custom_build_updates_disabled">Automatic updates and manual update checks are disabled to preserve your customizations.</string>
+</resources>

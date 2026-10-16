@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Warning message"
+            android:text="@string/ui_layout_diagnostic_item_diagnostic_text_text"
             android:textSize="13sp"
             android:textColor="?colorOnErrorContainer" />
             

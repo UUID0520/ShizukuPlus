@@ -4,7 +4,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_swipe"
-        android:title="Swipe Gestures"
+        android:title="@string/ui_settings_app_management_category_swipe_title"
         android:defaultValue="true">
 
         <rikka.preference.SimpleMenuPreference
@@ -29,7 +29,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_long_press"
-        android:title="Long Press Actions"
+        android:title="@string/ui_settings_app_management_category_long_press_title"
         android:defaultValue="true">
 
         <Preference
@@ -65,27 +65,27 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_verified_install"
-        android:title="Verified Installation"
+        android:title="@string/ui_settings_app_management_category_verified_install_title"
         android:defaultValue="false">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
             android:key="verify_apk_local"
-            android:title="Local Signature Matching"
-            android:summary="Verify updates match the installed app's signature. Fast and fully offline."
+            android:title="@string/ui_settings_app_management_verify_apk_local_title"
+            android:summary="@string/ui_settings_app_management_verify_apk_local_summary"
             android:defaultValue="true"
             android:icon="@drawable/ic_shield_24" />
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
             android:key="verify_apk_fdroid"
-            android:title="F-Droid / IzzyOnDroid Index"
-            android:summary="Verify APK hashes locally against trusted open-source metadata."
+            android:title="@string/ui_settings_app_management_verify_apk_fdroid_title"
+            android:summary="@string/ui_settings_app_management_verify_apk_fdroid_summary"
             android:defaultValue="true"
             android:icon="@drawable/ic_folder_24" />
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
             android:key="verify_apk_virustotal"
-            android:title="VirusTotal Scan"
-            android:summary="Scan APK hashes against VirusTotal before installation. Requires API key."
+            android:title="@string/ui_settings_app_management_verify_apk_virustotal_title"
+            android:summary="@string/ui_settings_app_management_verify_apk_virustotal_summary"
             android:defaultValue="false"
             android:icon="@drawable/ic_update_24" />
 
@@ -98,8 +98,8 @@
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
             android:key="verify_apk_pithus"
-            android:title="Pithus Threat Intel"
-            android:summary="Check hashes against Pithus to detect malware traits."
+            android:title="@string/ui_settings_app_management_verify_apk_pithus_title"
+            android:summary="@string/verify_pithus_default_summary"
             android:defaultValue="false"
             android:icon="@drawable/ic_admin_panel_settings_24" />
 

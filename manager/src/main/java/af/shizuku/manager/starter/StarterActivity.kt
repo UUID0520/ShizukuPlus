@@ -184,13 +184,13 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
 
     private suspend fun startSys() {
         if (!af.shizuku.manager.ShizukuSettings.isSamsungSystemUidEscalationEnabled()) {
-            log("Samsung System UID Escalation is disabled for security reasons.\n")
-            log("Enable it in Developer Settings to use this experimental feature.\n\n")
+            log(appContext.getString(R.string.starter_samsung_disabled))
+            log(appContext.getString(R.string.starter_samsung_enable_hint))
             log("info: shizuku_starter exit with 1")
             return
         }
 
-        log("Attempting Samsung System UID Escalation via FOTA agent...\n\n")
+        log(appContext.getString(R.string.starter_samsung_starting))
 
         withContext(Dispatchers.IO) {
             try {
@@ -206,14 +206,14 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
                         + "/libshizuku.so" + "; am force-stop com.sdet.fotaagent")
                 kotlinx.coroutines.delay(1000)
                 appContext.sendBroadcast(mIntent)
-                log("FOTA command broadcast sent!\n\n")
+                log(appContext.getString(R.string.starter_samsung_broadcast_sent))
                 log("info: shizuku_starter exit with 0")
             } catch (e: Exception) {
                 // com.sdet.fotaagent is a Samsung-specific system package this trick depends on -
                 // startActivity throws ActivityNotFoundException uncaught on devices/ROMs that
                 // don't ship it (SHIZUKUPLUS-73), even though this path is opt-in/experimental.
                 log(error = e)
-                log("Samsung System UID Escalation failed!\n")
+                log(appContext.getString(R.string.starter_samsung_failed))
             }
         }
     }
@@ -226,7 +226,7 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private suspend fun startRoot() {
-        log("Starting with root...\n")
+        log(appContext.getString(R.string.starter_root_starting))
 
         return withContext(Dispatchers.IO) {
             if (!Shell.getShell().isRoot) {

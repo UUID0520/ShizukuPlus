@@ -1,3 +1,49 @@
+# UUID0520 定制版（简体中文 / English）
+
+这是基于 [thejaustin/ShizukuPlus](https://github.com/thejaustin/ShizukuPlus) 稳定版本 `v13.6.0.r2551` 的个人定制分支，默认开发分支为 **`custom`**。
+
+[下载 ARM64 定制 APK](https://github.com/UUID0520/ShizukuPlus/releases) · [查看定制代码](https://github.com/UUID0520/ShizukuPlus/tree/custom)
+
+本分支包含以下定制：
+
+- **中英双语界面**：补齐简体中文资源，支持跟随系统及手动选择简体中文或 English，修正语言切换后的设置搜索缓存与原有占位符问题。
+- **后台隐藏**：通过设置开关控制应用卡片是否显示在最近任务列表，设置会保存并立即应用。
+- **禁用上游应用更新**：移除 Auto Update / Manual Update 入口，固定关闭应用更新检查、下载、安装和启动时的上游版本说明获取；导入旧设置也无法重新开启。
+- **ARM64 构建**：提供仅包含 `arm64-v8a` 原生库的测试 APK。
+
+基线提交为 `887c713436ea9313ec8a2599a15c7b6d4cb588ad`，保留在 `stable` 分支及 `v13.6.0.r2551` 标签。`api` 子模块固定在 `dd2b3b18529e75ad416629a4b68b401ebaf7dd98`。
+
+语言入口：**设置 → 外观 → 语言** / **Settings → Appearance → Language**。
+
+### 获取代码与构建
+
+```bash
+git clone --recurse-submodules --branch custom https://github.com/UUID0520/ShizukuPlus.git
+cd ShizukuPlus
+python scripts/dev/check-localization.py
+./gradlew :manager:assembleRelease --init-script scripts/dev/arm64.init.gradle --console=plain --no-parallel --max-workers=2
+```
+
+需要标准 OpenJDK 21、Android SDK（API 35、Build Tools 36.0.0）、CMake 3.22.1 和 NDK `29.0.14206865`。通过 `JAVA_HOME` 与 `ANDROID_HOME` / `ANDROID_SDK_ROOT` 设置本机路径；Windows 使用 `gradlew.bat`。可使用 `-PcustomNdkVersion=版本号` 更改 NDK。ARM64 初始化脚本关闭 Sentry 构建产物上传，无需配置上传凭据。
+
+更新禁用的独立回归测试：
+
+```bash
+./gradlew :manager:testShizukuplusDebugUnitTest --tests af.shizuku.manager.update.AppUpdatePolicyTest --init-script scripts/dev/arm64.init.gradle --init-script scripts/dev/update-policy-test.init.gradle --console=plain --no-parallel --max-workers=2
+```
+
+该命令仅编译并运行本次更新策略测试，避免将上游其他旧测试源混入此项验证。
+
+### 已提供的测试包
+
+Releases 中的 ARM64 APK 是此前已完成安装与文件哈希核验的同一份测试包，使用本地开发签名，包名为 `af.shizuku.plus.api`，`versionCode=2551`。后续源码构建的版本号按 Git 提交数自动生成。
+
+已通过 Release 构建、2,185 项中英资源条目检查、3 项更新策略回归测试，以及 APK 签名、ARM64 ELF 与 16 KB 对齐检查。界面交互和实际功能体验仍需手动测试。
+
+本项目保留上游 Git 历史、作者归属、Apache-2.0 许可与第三方许可说明。以下为上游项目文档，具体功能以所选稳定基线的实现为准。
+
+---
+
 <div align="center">
 
 I've finished moving my development environment and am now on a new device! Goodbye S22 Ultra, Hello S26 Ultra!
@@ -20,7 +66,7 @@ Shizuku lets normal apps use system-level APIs directly via a privileged process
 
 ## ⬇️ Download
 
-Get the latest release from [GitHub Releases](https://github.com/thejaustin/ShizukuPlus/releases) — see the release notes there for what's changed recently.
+Get this customized build from [UUID0520 GitHub Releases](https://github.com/UUID0520/ShizukuPlus/releases) — see the release notes there for what's changed recently.
 
 ## ✨ Shizuku+ Core Features
 

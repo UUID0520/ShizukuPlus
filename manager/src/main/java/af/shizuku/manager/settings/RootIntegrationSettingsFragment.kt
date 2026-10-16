@@ -194,9 +194,9 @@ class RootIntegrationSettingsFragment : BaseSettingsFragment() {
         suPathPref?.setOnPreferenceClickListener {
             val presets = arrayOf(
                 getString(R.string.su_path_preset_default),
-                "/system/bin/su (Standard AOSP)",
-                "/system/xbin/su (SuperSU Legacy)",
-                "/sbin/su (Magisk/Custom ROMs)",
+                this.getString(R.string.su_preset_aosp),
+                this.getString(R.string.su_preset_supersu),
+                this.getString(R.string.su_preset_magisk),
                 "/data/adb/ksu/bin/su (KernelSU)",
                 "/data/adb/ap/bin/su (APatch)",
                 getString(R.string.su_path_preset_custom)

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bridge_test_not_connected">Shizuku isn\'t connected. Start the Shizuku service from the home screen, then try again.</string>
+    <string name="bridge_test_failure_detail">Reason: %1$s\n\n</string>
+    <string name="bridge_test_adb_hint">ADB/shell mode detected. If your device restricts shell writes to /data/local/tmp, use the exported path instead. Tap Export in the compatibility hub and point root apps to that path, or switch to root mode for full access.</string>
+    <string name="bridge_test_retry_hint">Make sure the Shizuku service is running, then retry.</string>
+    <string name="bridge_test_deploy_failed">❌ Could not deploy the bridge to /data/local/tmp.\n\n%1$s%2$s</string>
+    <string name="bridge_test_root_privilege">root (uid 0) — full privileges</string>
+    <string name="bridge_test_shell_privilege">shell / ADB (uid 2000)</string>
+    <string name="bridge_test_unknown">unknown</string>
+    <string name="bridge_test_deployed">✅ Bridge deployed to %1$s\n</string>
+    <string name="bridge_test_files_missing">❌ Bridge files missing under %1$s\n</string>
+    <string name="bridge_test_privilege_label">• Privilege level: %1$s\n</string>
+    <string name="bridge_test_exec_ok">✅ ran end-to-end (uid %1$s)</string>
+    <string name="bridge_test_exec_failed">⚠️ did not complete end-to-end; exec-style apps may fail here:\n%1$s</string>
+    <string name="bridge_test_exec_blocked">⚠️ blocked on this device (likely SELinux): %1$s</string>
+    <string name="bridge_test_exec_label">• App-exec test: %1$s\n\n</string>
+    <string name="bridge_test_root_summary">Root-level bridge: apps needing true root can work through it.</string>
+    <string name="bridge_test_shell_summary">Shell-level bridge (like ADB): features needing only shell/ADB can work. Features requiring true root, such as reading another app\'s private data, cannot work even if the app detects root.</string>
+    <string name="bridge_test_authorize_hint">\n\nThe calling app must be authorized in Shizuku+ before its commands through the bridge can succeed.</string>
+</resources>

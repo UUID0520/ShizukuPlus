@@ -1,5 +1,6 @@
 package af.shizuku.manager.backup
 
+import af.shizuku.manager.R
 import android.content.Context
 import android.util.Base64
 import org.json.JSONObject
@@ -27,10 +28,10 @@ object BackupRestoreManager {
         if (version == 2) {
             val jsonString = String(Base64.decode(backupJson.getString("data"), Base64.NO_WRAP), Charsets.UTF_8)
             if (!SettingsBackupManager.import(context, jsonString)) {
-                throw Exception("Failed to import settings (invalid format)")
+                throw Exception(context.getString(R.string.backup_invalid_format))
             }
         } else {
-            throw Exception("This backup is encrypted. Use the encrypted restore option.")
+            throw Exception(context.getString(R.string.backup_encrypted_format_required))
         }
     }
 
@@ -61,7 +62,7 @@ object BackupRestoreManager {
 
         val success = SettingsBackupManager.import(context, jsonString)
         if (!success) {
-            throw Exception("Failed to import settings (invalid format)")
+            throw Exception(context.getString(R.string.backup_invalid_format))
         }
     }
 }

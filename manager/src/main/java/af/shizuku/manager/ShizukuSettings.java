@@ -33,6 +33,7 @@ public class ShizukuSettings {
         public static final String KEY_TCP_PORT = "tcp_port";
         public static final String KEY_LAST_PORT = "last_adb_port";
         public static final String KEY_AUTO_DISABLE_USB_DEBUGGING = "auto_disable_usb_debugging";
+        public static final String KEY_HIDE_FROM_RECENTS = "hide_from_recents";
         public static final String KEY_LANGUAGE = "language";
         public static final String KEY_TRANSLATION = "translation";
         public static final String KEY_TRANSLATION_CONTRIBUTORS = "translation_contributors";
@@ -1250,19 +1251,21 @@ public class ShizukuSettings {
 
     // Auto Update Settings (Shizuku+ additions)
     public static boolean isAutoUpdateEnabled() {
-        return getPreferences().getBoolean(Keys.KEY_AUTO_UPDATE_ENABLED, true);
+        return af.shizuku.manager.update.AppUpdatePolicy.ENABLED
+                && getPreferences().getBoolean(Keys.KEY_AUTO_UPDATE_ENABLED, false);
     }
 
     public static void setAutoUpdateEnabled(boolean enabled) {
-        getPreferences().edit().putBoolean(Keys.KEY_AUTO_UPDATE_ENABLED, enabled).apply();
+        getPreferences().edit().putBoolean(Keys.KEY_AUTO_UPDATE_ENABLED, enabled && af.shizuku.manager.update.AppUpdatePolicy.ENABLED).apply();
     }
 
     public static boolean isAutoInstallEnabled() {
-        return getPreferences().getBoolean(Keys.KEY_AUTO_INSTALL_ENABLED, false);
+        return af.shizuku.manager.update.AppUpdatePolicy.ENABLED
+                && getPreferences().getBoolean(Keys.KEY_AUTO_INSTALL_ENABLED, false);
     }
 
     public static void setAutoInstallEnabled(boolean enabled) {
-        getPreferences().edit().putBoolean(Keys.KEY_AUTO_INSTALL_ENABLED, enabled).apply();
+        getPreferences().edit().putBoolean(Keys.KEY_AUTO_INSTALL_ENABLED, enabled && af.shizuku.manager.update.AppUpdatePolicy.ENABLED).apply();
     }
 
     public static long getLastUpdateCheckTime() {
@@ -1320,6 +1323,11 @@ public class ShizukuSettings {
         if (p != null) p.edit().putBoolean(Keys.KEY_STEALTH_MODE, enable).apply();
     }
 
+
+    public static boolean isHideFromRecentsEnabled() {
+        SharedPreferences p = getPreferences();
+        return p != null && p.getBoolean(Keys.KEY_HIDE_FROM_RECENTS, false);
+    }
 
     public static boolean isLiveActivityEnabled() {
         SharedPreferences p = getPreferences();

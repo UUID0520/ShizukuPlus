@@ -1,0 +1,7 @@
+// Isolate the custom update-policy regression from unrelated upstream test sources.
+gradle.projectsEvaluated {
+    def manager = gradle.rootProject.findProject(":manager")
+    manager.tasks.matching { it.name == "compileShizukuplusDebugUnitTestKotlin" }.configureEach { task ->
+        task.setSource(manager.fileTree("src/test/java/af/shizuku/manager/update"))
+    }
+}

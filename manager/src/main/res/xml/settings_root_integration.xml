@@ -4,7 +4,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_adb_connection"
-        android:title="ADB Connection"
+        android:title="@string/ui_settings_root_integration_category_adb_connection_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -32,7 +32,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_stock_shizuku_compat"
-        android:title="Stock Shizuku Compatibility"
+        android:title="@string/ui_settings_root_integration_category_stock_shizuku_compat_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -52,7 +52,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_su_bridge"
-        android:title="SU Bridge Configuration"
+        android:title="@string/ui_settings_root_integration_category_su_bridge_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -64,8 +64,8 @@
 
         <EditTextPreference
             android:key="custom_su_path"
-            android:title="Custom SU Path"
-            android:summary="Set a custom path for the su binary spoofing (e.g., /system/xbin/su). Leave blank for default."
+            android:title="@string/ui_settings_root_integration_custom_su_path_title"
+            android:summary="@string/ui_settings_root_integration_custom_su_path_summary"
             android:dependency="su_bridge_enabled"
             android:icon="@drawable/ic_terminal_24"
             app:iconSpaceReserved="true"
@@ -75,7 +75,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_root_modules"
-        android:title="Rootless Bridges"
+        android:title="@string/ui_settings_root_integration_category_root_modules_title"
         android:defaultValue="true">
 
         <Preference
@@ -86,8 +86,8 @@
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="root_build_prop_redirect_enabled"
-            android:title="build.prop Redirection"
-            android:summary="Redirect system build property modifications to a writable proxy file rootless"
+            android:title="@string/ui_settings_root_integration_root_build_prop_redirect_enabled_title"
+            android:summary="@string/ui_settings_root_integration_root_build_prop_redirect_enabled_summary"
             android:icon="@drawable/ic_settings_suggest_24"
             android:defaultValue="false"
             app:infoTitle="build.prop Redirection Explainer"
@@ -115,13 +115,13 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_ghost_bridge"
-        android:title="Mocking &amp; Simulation"
+        android:title="@string/ui_settings_root_integration_category_ghost_bridge_title"
         android:defaultValue="false">
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="root_iptables_mocking_enabled"
-            android:title="Firewall Success Mocking"
-            android:summary="Intercept and fake success for iptables rules when local netfilter permissions fail"
+            android:title="@string/ui_settings_root_integration_root_iptables_mocking_enabled_title"
+            android:summary="@string/ui_settings_root_integration_root_iptables_mocking_enabled_summary"
             android:icon="@drawable/ic_shield_24"
             android:defaultValue="false"
             app:infoTitle="Firewall Mocking Explainer"
@@ -147,29 +147,29 @@
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="overlay_fs_proxy_enabled"
-            android:title="OverlayFS System Ghosting"
-            android:summary="[Developer] Seamlessly mount virtual overlay filesystems to simulate rw /system for root apps. Warning: Highly experimental."
+            android:title="@string/ui_settings_root_integration_overlay_fs_proxy_enabled_title"
+            android:summary="@string/ui_settings_root_integration_overlay_fs_proxy_enabled_summary"
             android:icon="@drawable/ic_folder_24"
             android:defaultValue="false" />
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="root_kernel_ghosting_enabled"
-            android:title="Kernel Driver Ghosting"
-            android:summary="[Developer] Silently simulate success for insmod/rmmod kernel commands without loading the kernel modules."
+            android:title="@string/ui_settings_root_integration_root_kernel_ghosting_enabled_title"
+            android:summary="@string/ui_settings_root_integration_root_kernel_ghosting_enabled_summary"
             android:icon="@drawable/ic_settings_suggest_24"
             android:defaultValue="false" />
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="root_partition_ghosting_enabled"
-            android:title="Partition Flash Ghosting"
-            android:summary="[Developer] Intercept and fake 'dd' operations targeting /dev/block/. Prevents ROM flashers from crashing while doing nothing."
+            android:title="@string/ui_settings_root_integration_root_partition_ghosting_enabled_title"
+            android:summary="@string/ui_settings_root_integration_root_partition_ghosting_enabled_summary"
             android:icon="@drawable/ic_admin_panel_settings_24"
             android:defaultValue="false" />
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="root_power_ghosting_enabled"
-            android:title="Power State Ghosting"
-            android:summary="[Developer] Intercept reboot, recovery, and soft-reboot commands and silently ignore them to prevent unwanted device restarts."
+            android:title="@string/ui_settings_root_integration_root_power_ghosting_enabled_title"
+            android:summary="@string/ui_settings_root_integration_root_power_ghosting_enabled_summary"
             android:icon="@drawable/ic_server_restart"
             android:defaultValue="false" />
 
@@ -177,20 +177,20 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_unlocked_bootloader"
-        android:title="Bootloader Integration"
+        android:title="@string/ui_settings_root_integration_category_unlocked_bootloader_title"
         android:defaultValue="false">
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="bootloader_flash_ota_enabled"
-            android:title="Systemless OTA Flashing"
-            android:summary="Flash OTA payloads to inactive slot without root or custom recovery"
+            android:title="@string/ui_settings_root_integration_bootloader_flash_ota_enabled_title"
+            android:summary="@string/ui_settings_root_integration_bootloader_flash_ota_enabled_summary"
             android:icon="@drawable/ic_update_24"
             android:defaultValue="false" />
 
         <af.shizuku.manager.settings.PlusFeaturePreference
             android:key="bootloader_fastbootd_reboot_enabled"
-            android:title="FastbootD Transition"
-            android:summary="Restart directly into fastbootd user space from Shizuku shell"
+            android:title="@string/ui_settings_root_integration_bootloader_fastbootd_reboot_enabled_title"
+            android:summary="@string/ui_settings_root_integration_bootloader_fastbootd_reboot_enabled_summary"
             android:icon="@drawable/ic_server_restart"
             android:defaultValue="false" />
 

@@ -4,7 +4,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_color_theme"
-        android:title="Color &amp; Theme"
+        android:title="@string/ui_settings_personalization_category_color_theme_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.IntegerSimpleMenuPreference
@@ -28,8 +28,8 @@
 
         <rikka.preference.SimpleMenuPreference
             android:key="custom_accent"
-            android:title="Custom Accent Color"
-            android:summary="Choose a color when Dynamic Color is off"
+            android:title="@string/ui_settings_personalization_custom_accent_title"
+            android:summary="@string/ui_settings_personalization_custom_accent_summary"
             android:defaultValue="DEFAULT"
             android:entries="@array/custom_accents"
             android:entryValues="@array/custom_accents_values"
@@ -54,7 +54,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_shape_style"
-        android:title="Shape &amp; Icon Style"
+        android:title="@string/ui_settings_personalization_category_shape_style_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -103,7 +103,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_motion"
-        android:title="Motion"
+        android:title="@string/ui_settings_personalization_category_motion_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -155,7 +155,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_home_screen"
-        android:title="Home Screen"
+        android:title="@string/ui_settings_personalization_category_home_screen_title"
         android:defaultValue="true">
 
         <af.shizuku.manager.settings.GrayableIconSwitchPreference
@@ -192,7 +192,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_language"
-        android:title="Language"
+        android:title="@string/settings_language"
         android:defaultValue="false">
 
         <rikka.preference.SimpleMenuPreference

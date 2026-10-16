@@ -4,7 +4,7 @@
 
     <af.shizuku.manager.settings.CollapsiblePreferenceCategory
         android:key="category_debug"
-        android:title="Debug &amp; Diagnostics"
+        android:title="@string/ui_settings_developer_options_category_debug_title"
         android:defaultValue="true">
 
         <Preference

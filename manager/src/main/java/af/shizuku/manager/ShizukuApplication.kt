@@ -583,6 +583,7 @@ class ShizukuApplication : Application(), Configuration.Provider {
         // Track the foreground Activity so a crash captured on a background thread can still
         // find "what was on screen" for SelectiveScreenshotEventProcessor.
         af.shizuku.manager.utils.ForegroundActivityTracker.register(this)
+        af.shizuku.manager.utils.RecentTasksController(this)
 
         // 2. Initialize Sentry FIRST to catch all crashes including early startup failures
         initializeSentryEarly()

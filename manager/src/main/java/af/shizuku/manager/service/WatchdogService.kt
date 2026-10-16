@@ -165,7 +165,7 @@ class WatchdogService : Service() {
 
     private fun showCrashNotification() {
         val channelId = CRASH_CHANNEL_ID
-        val channelName = "Crash Reports"
+        val channelName = this.getString(R.string.notification_channel_crash_reports)
 
         val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

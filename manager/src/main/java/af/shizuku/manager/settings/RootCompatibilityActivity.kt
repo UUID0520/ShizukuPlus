@@ -40,6 +40,7 @@ import af.shizuku.manager.databinding.ActivityRootCompatibilityBinding
 import af.shizuku.manager.databinding.AppListItemBinding
 import af.shizuku.manager.databinding.ListSectionHeaderBinding
 import timber.log.Timber
+import af.shizuku.manager.utils.AppMetadataLocalizer
 import af.shizuku.manager.database.AppContextManager
 import af.shizuku.manager.database.RootCompatHelper
 import af.shizuku.manager.shell.ShellTutorialActivity
@@ -225,7 +226,7 @@ class RootCompatibilityActivity : AppBarActivity() {
         val items = mutableListOf<ListItem>()
 
         AppContextManager.getRootLegacyPackages().forEach { (category, packages) ->
-            items.add(ListItem.Header(category))
+            items.add(ListItem.Header(AppMetadataLocalizer.text(this, category)))
             packages.forEach { items.add(ListItem.App(it)) }
         }
 
@@ -425,7 +426,7 @@ class RootCompatibilityActivity : AppBarActivity() {
             } else if (holder is AppViewHolder && item is ListItem.App) {
                 val pkg = item.packageName
                 val pm = packageManager
-                val metadata = AppContextManager.getMetadata(pkg)
+                val metadata = AppMetadataLocalizer.metadata(this@RootCompatibilityActivity, AppContextManager.getMetadata(pkg))
 
                 holder.binding.summary.text = pkg
                 holder.binding.appContext.text = metadata?.description ?: ""

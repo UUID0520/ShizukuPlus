@@ -563,22 +563,20 @@ object RootCompatHelper {
     suspend fun selfTest(context: Context): BridgeSelfTest = withContext(Dispatchers.IO) {
         if (!isShizukuAvailable()) {
             return@withContext BridgeSelfTest(false,
-                "Shizuku isn't connected. Start the Shizuku service from the home screen, then try again.")
+                context.getString(R.string.bridge_test_not_connected))
         }
         val deployResult = deployBridgeToTmpDetailed(context)
         val tmpSu = deployResult.suPath
             ?: run {
                 val serverUid = try { Shizuku.getUid() } catch (_: Exception) { -1 }
-                val detail = deployResult.failureDetail?.let { "Reason: $it\n\n" } ?: ""
+                val detail = deployResult.failureDetail?.let { context.getString(R.string.bridge_test_failure_detail, it) } ?: ""
                 val action = if (serverUid == 2000) {
-                    "ADB/shell mode detected. If your device restricts writes to /data/local/tmp from " +
-                        "the shell process, use the exported path instead. Tap \"Export\" in the " +
-                        "compatibility hub and direct root apps to that path, or switch to root mode for full access."
+                    context.getString(R.string.bridge_test_adb_hint)
                 } else {
-                    "Make sure the Shizuku service is running, then retry."
+                    context.getString(R.string.bridge_test_retry_hint)
                 }
                 return@withContext BridgeSelfTest(false,
-                    "❌ Could not deploy the bridge to /data/local/tmp.\n\n$detail$action")
+                    context.getString(R.string.bridge_test_deploy_failed, detail, action))
             }
         val tmpDir = tmpSu.substringBeforeLast('/')
 
@@ -589,15 +587,15 @@ object RootCompatHelper {
         val deployed = lsOut.isNotBlank() && !lsOut.contains("No such file")
         val uid = Regex("Uid:\\s+(\\d+)").find(lsOut)?.groupValues?.get(1)?.toIntOrNull()
         val privLabel = when (uid) {
-            0 -> "root (uid 0) — full privileges"
-            2000 -> "shell / ADB (uid 2000)"
-            null -> "unknown"
+            0 -> context.getString(R.string.bridge_test_root_privilege)
+            2000 -> context.getString(R.string.bridge_test_shell_privilege)
+            null -> context.getString(R.string.bridge_test_unknown)
             else -> "uid $uid"
         }
 
         val sb = StringBuilder()
-        sb.append(if (deployed) "✅ Bridge deployed to $tmpDir\n" else "❌ Bridge files missing under $tmpDir\n")
-        sb.append("• Privilege level: $privLabel\n")
+        sb.append(if (deployed) context.getString(R.string.bridge_test_deployed, tmpDir) else context.getString(R.string.bridge_test_files_missing, tmpDir))
+        sb.append(context.getString(R.string.bridge_test_privilege_label, privLabel))
 
         // Probe B — real app-exec flow (best-effort).
         val appExec = try {
@@ -608,24 +606,21 @@ object RootCompatHelper {
             p.waitFor()
             if (out.contains("APP_OK")) {
                 val auid = Regex("Uid:\\s+(\\d+)").find(out)?.groupValues?.get(1)?.toIntOrNull()
-                "✅ ran end-to-end (uid ${auid ?: "?"})"
+                context.getString(R.string.bridge_test_exec_ok, auid?.toString() ?: "?")
             } else {
-                "⚠️ didn't round-trip — an exec-style app may fail here:\n${(out + err).trim().take(220)}"
+                context.getString(R.string.bridge_test_exec_failed, (out + err).trim().take(220))
             }
         } catch (e: Exception) {
-            "⚠️ blocked on this device (likely SELinux): ${e.message?.take(160)}"
+            context.getString(R.string.bridge_test_exec_blocked, e.message?.take(160))
         }
-        sb.append("• App-exec test: $appExec\n\n")
+        sb.append(context.getString(R.string.bridge_test_exec_label, appExec))
 
         if (uid == 0) {
-            sb.append("Root-level bridge: apps needing true root can work through it.")
+            sb.append(context.getString(R.string.bridge_test_root_summary))
         } else {
-            sb.append("Shell-level bridge (like ADB): app features needing only shell/ADB will work; " +
-                "features that require true root — e.g. reading another app's private data — cannot, " +
-                "even though the app may detect \"root\".")
+            sb.append(context.getString(R.string.bridge_test_shell_summary))
         }
-        sb.append("\n\nRemember: the calling app must be authorized in Shizuku+ before its own commands " +
-            "through the bridge succeed.")
+        sb.append(context.getString(R.string.bridge_test_authorize_hint))
 
         BridgeSelfTest(deployed && uid != null, sb.toString())
     }

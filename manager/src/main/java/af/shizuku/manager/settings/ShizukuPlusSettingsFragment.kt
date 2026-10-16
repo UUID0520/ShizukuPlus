@@ -47,22 +47,16 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
     // KeyPermanentlyInvalidatedException needs a message explaining it's unrecoverable rather
     // than a raw exception string (#332) - encryption self-heals from this in CryptoUtils, but
     // decryption of an existing backup genuinely can't.
-    private fun backupErrorMessage(prefix: String, e: Exception): String = when (e) {
-        is KeyPermanentlyInvalidatedException ->
-            "$prefix: your device's screen lock or biometrics changed since this backup's " +
-                "encryption key was created, which permanently invalidates it by design. " +
-                if (prefix == "Restore failed") "This backup can no longer be decrypted."
-                else "Please try again to generate a new key."
-        // The key was destroyed (uninstall/reinstall or cleared data) — explain, don't show a raw error (#370).
-        is BackupKeyUnavailableException -> "$prefix: ${e.message}"
-        // A valid key exists but can't authenticate this ciphertext: the backup was made by a
-        // different install, is corrupt, or was tampered with. GCM's tag check is exactly what
-        // catches that — surface it as a clear cause instead of "AEADBadTagException" (#370).
-        is AEADBadTagException ->
-            "$prefix: this backup could not be decrypted. It was most likely created by a different " +
-                "installation of Shizuku+ — backups are encrypted per-install and can't be restored " +
-                "after reinstalling or clearing the app's data."
-        else -> "$prefix: ${e.message ?: e.javaClass.simpleName}"
+    private fun backupErrorMessage(restoring: Boolean, e: Exception): String = when (e) {
+        is KeyPermanentlyInvalidatedException -> getString(
+            if (restoring) R.string.restore_key_invalidated else R.string.backup_key_invalidated
+        )
+        is BackupKeyUnavailableException -> getString(R.string.backup_key_unavailable)
+        is AEADBadTagException -> getString(R.string.backup_decryption_failed)
+        else -> getString(
+            if (restoring) R.string.restore_failed_generic else R.string.backup_failed_generic,
+            e.message ?: e.javaClass.simpleName
+        )
     }
 
     private val createPlainBackupLauncher = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
@@ -94,7 +88,7 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
                 }
                 Toast.makeText(ctx, R.string.backup_exported_success, Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
-                Toast.makeText(ctx, backupErrorMessage("Backup failed", e), Toast.LENGTH_LONG).show()
+                Toast.makeText(ctx, backupErrorMessage(false, e), Toast.LENGTH_LONG).show()
             }
             return@registerForActivityResult
         }
@@ -109,7 +103,7 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
                     }
                     Toast.makeText(ctx, R.string.backup_exported_success, Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
-                    Toast.makeText(ctx, backupErrorMessage("Backup failed", e), Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, backupErrorMessage(false, e), Toast.LENGTH_LONG).show()
                 }
             }, onError = { errCode ->
                 Toast.makeText(ctx, ctx.getString(R.string.backup_auth_failed, errCode), Toast.LENGTH_SHORT).show()
@@ -149,7 +143,7 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
                     BackupRestoreManager.restoreFromPayload(ctx, payload, cipher)
                     Toast.makeText(ctx, R.string.backup_restored_success, Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
-                    Toast.makeText(ctx, backupErrorMessage("Restore failed", e), Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, backupErrorMessage(true, e), Toast.LENGTH_LONG).show()
                 }
                 return@registerForActivityResult
             }
@@ -160,7 +154,7 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
                     BackupRestoreManager.restoreFromPayload(ctx, payload, crypto?.cipher ?: cipher)
                     Toast.makeText(ctx, R.string.backup_restored_success, Toast.LENGTH_LONG).show()
                 } catch (e: Exception) {
-                    Toast.makeText(ctx, backupErrorMessage("Restore failed", e), Toast.LENGTH_LONG).show()
+                    Toast.makeText(ctx, backupErrorMessage(true, e), Toast.LENGTH_LONG).show()
                 }
             }, onError = { errCode ->
                 Toast.makeText(ctx, ctx.getString(R.string.backup_auth_failed, errCode), Toast.LENGTH_SHORT).show()
@@ -494,13 +488,13 @@ class ShizukuPlusSettingsFragment : BaseSettingsFragment() {
             // Samsung UID escalation uses a Samsung-specific root exploit; ADB UID 2000 can't use it.
             findPreference<Preference>("samsung_system_uid_escalation_enabled")?.apply {
                 isEnabled = false
-                summary = "Root mode only — this exploit requires the server to run as UID 0."
+                summary = this@ShizukuPlusSettingsFragment.getString(R.string.settings_root_mode_only)
             }
             // Storage Bridge uses `run-as` in ADB mode (uid 2000), which only works for
             // debuggable apps. Production app data (/data/data) is inaccessible — backup
             // tools like Neo Backup will silently see no app data.
             findPreference<Preference>("storage_proxy_enabled")?.let { pref ->
-                val note = "ADB mode: /data/data limited to debuggable apps — backup tools may not see app data."
+                val note = this.getString(R.string.settings_storage_adb_limit)
                 pref.summary = "$note\n\n${pref.summary}"
             }
         }

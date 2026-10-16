@@ -1,5 +1,6 @@
 package af.shizuku.manager.backup
 
+import af.shizuku.manager.R
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -83,7 +84,7 @@ class BackupViewModel(app: Application) : AndroidViewModel(app) {
                 _state.value = UiState.Loaded(entries)
             } catch (e: Exception) {
                 Timber.e(e, "loadApps failed")
-                _state.value = UiState.Error(e.message ?: "Unknown error")
+                _state.value = UiState.Error(e.message ?: getApplication<Application>().getString(R.string.error_unknown))
             }
         }
     }
@@ -141,11 +142,11 @@ class BackupViewModel(app: Application) : AndroidViewModel(app) {
                 if (backedUpSomething) {
                     _events.emit(BackupEvent.BackupComplete(pkg, pkgDir.absolutePath))
                 } else {
-                    _events.emit(BackupEvent.Failure("No data could be read for $pkg. The app may block backup access."))
+                    _events.emit(BackupEvent.Failure(getApplication<Application>().getString(R.string.backup_no_readable_data, pkg)))
                 }
             } catch (e: Exception) {
                 Timber.e(e, "Backup failed for $pkg")
-                _events.emit(BackupEvent.Failure("Backup failed for $pkg: ${e.message}"))
+                _events.emit(BackupEvent.Failure(getApplication<Application>().getString(R.string.backup_app_error_detail, pkg, e.message)))
             } finally {
                 if (prepared) {
                     try { ShizukuPlusAPI.ApkPatcher.restoreOriginal(pkg) } catch (ex: Exception) {
@@ -178,7 +179,7 @@ class BackupViewModel(app: Application) : AndroidViewModel(app) {
                 _events.emit(BackupEvent.FreezeChanged(pkg, nowFrozen))
             } catch (e: Exception) {
                 Timber.e(e, "toggleFreeze failed for $pkg")
-                _events.emit(BackupEvent.Failure("Freeze toggle failed: ${e.message}"))
+                _events.emit(BackupEvent.Failure(getApplication<Application>().getString(R.string.backup_freeze_error_detail, e.message)))
             }
         }
     }
